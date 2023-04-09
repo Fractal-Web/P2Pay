@@ -56,3 +56,32 @@
 		}
 	}
 }
+
+@media only screen and (max-width: 768px) {
+	.payment-method {
+		.container {
+			div {
+				height: 6.7vh;
+				padding: 0 20px;
+
+				&.summ {
+					>p {
+						font-size: 24px;
+					}
+				}
+
+				&.bank {
+					>p {
+						font-size: 24px;
+						margin-left: 20px;
+					}
+				}
+			}
+
+			>.banks {
+				gap: 0.5vh;
+			}
+		}
+
+	}
+}

@@ -6,9 +6,9 @@ import './style.css'
 
 // components
 import App from './App.vue'
-import PaymentMethod from './components/PaymentMethod.vue';
-import Transfer from './components/Transfer.vue';
-import PaymentRequest from './components/PaymentRequest.vue'
+import PaymentMethod from './components/pages/PaymentMethod.vue';
+import Transfer from './components/pages/Transfer.vue';
+import PaymentRequest from './components/pages/PaymentRequest.vue'
 
 const router = createRouter({
 	routes: [

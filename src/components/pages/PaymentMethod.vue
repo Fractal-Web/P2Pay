@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { Store, useStore } from 'vuex';
-import { key } from '../store/store';
+import { key } from '../../store/store';
 import './PaymentMethod.css';
 
 // assets
-import Logo from '../assets/logo.svg';
-import BanksOther from '../assets/banks/banksIcon_other.svg';
+import Logo from '../../assets/logo.svg';
+import BanksOther from '../../assets/banks/banksIcon_other.svg';
 
 // interfaces
-import { IBanks, IStore } from '../store/store';
+import { IBanks, IStore } from '../../store/store';
 
 const store: Store<IStore> = useStore(key);
 const banks: IBanks[] = store.state.banks;
