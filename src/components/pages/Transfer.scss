@@ -158,3 +158,80 @@
 		}
 	}
 }
+
+@media only screen and (max-width: 768px) {
+	.transfer {
+		>.container {
+			>.payment-info {
+				border-radius: 20px;
+				padding: 24px;
+
+				>div {
+					&.topbar {
+						>div {
+							gap: 13px;
+
+							>img {
+								width: 17px;
+							}
+
+							>p {
+								font-size: 16px;
+							}
+						}
+
+						.timer {
+							font-size: 16px;
+						}
+					}
+
+					&.main-info {
+						>div {
+							gap: 14px;
+
+							>p {
+								font-size: 20px;
+							}
+
+							>img {
+								height: 24px;
+							}
+						}
+					}
+				}
+
+				>p {
+					font-size: 16px;
+				}
+			}
+
+			>.payment-choise {
+				flex-direction: column;
+				gap: 10px;
+
+				.payment-choise-or {
+					display: none;
+				}
+			}
+
+			>input {
+				&+label {
+					&::before {
+						width: 24px;
+						height: 24px;
+						border-radius: 6px;
+						margin-left: -20px;
+					}
+				}
+			}
+		}
+
+		>button.add.modify {
+			width: 270px;
+
+			>img {
+				height: 26px;
+			}
+		}
+	}
+}

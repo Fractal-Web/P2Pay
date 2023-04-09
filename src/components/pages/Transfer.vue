@@ -1,22 +1,33 @@
 <script setup lang="ts">
 import { Store, useStore } from 'vuex';
-import { key } from '../store/store';
+import { Ref, ref } from 'vue';
+import { key } from '../../store/store';
 import VueCountdown from '@chenfengyuan/vue-countdown';
+import DataEncryptPopup from '../DataEncryptPopup.vue';
+import QRPopup from '../QRPopup.vue';
 import './Transfer.css';
 
 // assets
-import Logo from '../assets/logo.svg';
-import CopyIcon from '../assets/copy_icon.svg';
-import LockIcon from '../assets/lock_icon.svg';
+import Logo from '../../assets/logo.svg';
+import CopyIcon from '../../assets/copy_icon.svg';
+import LockIcon from '../../assets/lock_icon.svg';
 
 // interfaces
-import { IStore } from '../store/store';
+import { IStore } from '../../store/store';
 
 const store: Store<IStore> = useStore(key);
 const ClipboardCopy = (text: string) => navigator.clipboard.writeText(text);
+
+const isPopupOpened: Ref<'none' | 'DataEncrypt' | 'QR'> = ref('none');
+const ChangePopup = (popupName: 'none' | 'DataEncrypt' | 'QR') => {
+	isPopupOpened.value = popupName;
+	console.log(isPopupOpened.value);
+};
 </script>
 
 <template>
+	<DataEncryptPopup :ChangePopup="ChangePopup" v-if="isPopupOpened == 'DataEncrypt'" />
+	<QRPopup :ChangePopup="ChangePopup" v-if="isPopupOpened == 'QR'" />
 	<div class="transfer page-container">
 		<img :src="`${Logo}`" class="logo" />
 		<div class="container">
@@ -74,7 +85,7 @@ const ClipboardCopy = (text: string) => navigator.clipboard.writeText(text);
 				</p>
 			</div>
 		</div>
-		<button class="add modify">
+		<button class="add modify" @click="ChangePopup('DataEncrypt')">
 			<img :src="`${LockIcon}`" />
 			<p>Переказ захищений</p>
 		</button>
@@ -93,8 +104,8 @@ const ClipboardCopy = (text: string) => navigator.clipboard.writeText(text);
 			</ol>
 			<div class="payment-choise">
 				<button class="add">Сплатити у додатку</button>
-				<p><b>або</b></p>
-				<button class="add">Отримати QR код для оплати</button>
+				<p class="payment-choise-or"><b>або</b></p>
+				<button class="add" @click="ChangePopup('QR')">Отримати QR код для оплати</button>
 			</div>
 		</div>
 		<div class="container">

@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { Store, useStore } from 'vuex';
-import { key } from '../store/store';
+import { key } from '../../store/store';
 import VueCountdown from '@chenfengyuan/vue-countdown';
 import './PaymentRequest.css';
 
 // assets
-import Logo from '../assets/logo.svg';
-import PaymentFalse from '../assets/paymentRequest/payment-false.svg';
-import PaymentTrue from '../assets/paymentRequest/payment-true.svg';
+import Logo from '../../assets/logo.svg';
+import PaymentFalse from '../../assets/paymentRequest/payment-false.svg';
+import PaymentTrue from '../../assets/paymentRequest/payment-true.svg';
 
 // interfaces
-import { IStore } from '../store/store';
+import { IStore } from '../../store/store';
 
 const store: Store<IStore> = useStore(key);
 </script>
