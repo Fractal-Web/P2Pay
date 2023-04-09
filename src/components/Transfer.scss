@@ -1,0 +1,160 @@
+.transfer {
+	>.container {
+		>h1 {
+			>span {
+				font-weight: 800;
+				color: #300060;
+			}
+		}
+
+		>.payment-info {
+			width: 100%;
+			height: auto;
+			border-radius: 60px;
+			padding: 30px 40px;
+			background-color: #F4F3F4;
+			display: flex;
+			flex-direction: column;
+			gap: 3.5vh;
+			margin-top: 3vh;
+
+			>div {
+				display: flex;
+				align-items: center;
+
+				&.topbar {
+					width: 100%;
+					justify-content: space-between;
+
+					>div {
+						display: flex;
+						align-items: center;
+						gap: 20px;
+
+						>p {
+							font-size: 24px;
+						}
+					}
+
+					.timer {
+						font-family: 'Mont';
+						font-weight: 800;
+						font-size: 24px;
+						line-height: 100%;
+					}
+				}
+
+				&.main-info {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 10px;
+
+					>div {
+						display: flex;
+						align-items: center;
+						gap: 20px;
+
+						>img {
+							cursor: pointer;
+						}
+					}
+				}
+
+				>div {
+
+					>p {
+						font-weight: 600;
+						font-size: 32px;
+
+						>span {
+							color: #DE0288;
+							font-weight: 800;
+						}
+					}
+
+					>img {
+						height: 35px;
+					}
+				}
+
+
+			}
+
+			>p {
+				font-weight: 600;
+				font-size: 24px;
+				line-height: 100%;
+				text-align: left;
+			}
+		}
+
+		>.payment-choise {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: 2vh;
+		}
+
+		>input {
+			position: absolute;
+			z-index: -1;
+			opacity: 0;
+
+			&+label {
+				display: inline-flex;
+				align-items: center;
+				user-select: none;
+				margin-bottom: 1.5vh;
+
+				&::before {
+					content: '';
+					display: inline-block;
+					width: 35px;
+					height: 35px;
+					flex-shrink: 0;
+					flex-grow: 0;
+					border: 1px solid #DE0288;
+					border-radius: 10px;
+					margin-right: 0.5em;
+					background-repeat: no-repeat;
+					background-position: center center;
+					background-size: 50% 50%;
+				}
+			}
+
+			&:checked {
+				&+label {
+					&::before {
+						border-color: #DE0288;
+						background-color: #DE0288;
+						background-image: url("../assets/checkbox_icon.svg");
+					}
+				}
+			}
+		}
+
+		>label {
+			margin-left: 20px;
+		}
+	}
+
+	>button.add.modify {
+		align-self: center;
+		width: 365px;
+
+		>img,
+		>p {
+			transition: .3s;
+			color: #DE0288;
+		}
+
+		&:hover {
+
+			>img,
+			>p {
+				transition: .3s;
+				opacity: .5;
+			}
+		}
+	}
+}
