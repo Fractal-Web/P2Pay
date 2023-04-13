@@ -1,24 +1,28 @@
 .transfer {
-	>.container {
-		>h1 {
-			>span {
+	&.page-container {
+		height: auto;
+		gap: 40px;
+	}
+
+	> .container {
+		> h1 {
+			> span {
 				font-weight: 800;
 				color: #300060;
 			}
 		}
 
-		>.payment-info {
+		> .payment-info {
 			width: 100%;
 			height: auto;
 			border-radius: 60px;
 			padding: 30px 40px;
-			background-color: #F4F3F4;
+			background-color: #f4f3f4;
 			display: flex;
 			flex-direction: column;
-			gap: 3.5vh;
-			margin-top: 3vh;
+			margin-top: 40px;
 
-			>div {
+			> div {
 				display: flex;
 				align-items: center;
 
@@ -26,12 +30,12 @@
 					width: 100%;
 					justify-content: space-between;
 
-					>div {
+					> div {
 						display: flex;
 						align-items: center;
 						gap: 20px;
 
-						>p {
+						> p {
 							font-size: 24px;
 						}
 					}
@@ -41,46 +45,46 @@
 						font-weight: 800;
 						font-size: 24px;
 						line-height: 100%;
+						color: #171717;
 					}
 				}
 
 				&.main-info {
 					flex-direction: column;
 					align-items: flex-start;
-					gap: 10px;
+					gap: 20px;
+					margin-top: 40px;
 
-					>div {
+					> div {
 						display: flex;
 						align-items: center;
 						gap: 20px;
 
-						>img {
+						> img {
 							cursor: pointer;
 						}
 					}
 				}
 
-				>div {
-
-					>p {
+				> div {
+					> p {
 						font-weight: 600;
 						font-size: 32px;
 
-						>span {
-							color: #DE0288;
+						> span {
+							color: #de0288;
 							font-weight: 800;
 						}
 					}
 
-					>img {
+					> img {
 						height: 35px;
 					}
 				}
-
-
 			}
 
-			>p {
+			> p {
+				margin-top: 40px;
 				font-weight: 600;
 				font-size: 24px;
 				line-height: 100%;
@@ -88,23 +92,23 @@
 			}
 		}
 
-		>.payment-choise {
+		> .payment-choise {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			margin-top: 2vh;
+			margin-top: 20px;
 		}
 
-		>input {
+		> input {
 			position: absolute;
 			z-index: -1;
 			opacity: 0;
 
-			&+label {
+			& + label {
 				display: inline-flex;
 				align-items: center;
 				user-select: none;
-				margin-bottom: 1.5vh;
+				margin-bottom: 20px;
 
 				&::before {
 					content: '';
@@ -113,7 +117,7 @@
 					height: 35px;
 					flex-shrink: 0;
 					flex-grow: 0;
-					border: 1px solid #DE0288;
+					border: 1px solid #de0288;
 					border-radius: 10px;
 					margin-right: 0.5em;
 					background-repeat: no-repeat;
@@ -123,37 +127,36 @@
 			}
 
 			&:checked {
-				&+label {
+				& + label {
 					&::before {
-						border-color: #DE0288;
-						background-color: #DE0288;
-						background-image: url("../assets/checkbox_icon.svg");
+						border-color: #de0288;
+						background-color: #de0288;
+						background-image: url('../assets/checkbox_icon.svg');
 					}
 				}
 			}
 		}
 
-		>label {
+		> label {
 			margin-left: 20px;
 		}
 	}
 
-	>button.add.modify {
+	> button.add.modify {
 		align-self: center;
 		width: 365px;
 
-		>img,
-		>p {
-			transition: .3s;
-			color: #DE0288;
+		> img,
+		> p {
+			transition: 0.3s;
+			color: #de0288;
 		}
 
 		&:hover {
-
-			>img,
-			>p {
-				transition: .3s;
-				opacity: .5;
+			> img,
+			> p {
+				transition: 0.3s;
+				opacity: 0.5;
 			}
 		}
 	}
@@ -161,21 +164,31 @@
 
 @media only screen and (max-width: 768px) {
 	.transfer {
-		>.container {
-			>.payment-info {
+		&.page-container {
+			gap: 20px;
+		}
+
+		> .container {
+
+			h1 {
+				margin-top: 20px;
+			}
+
+			> .payment-info {
 				border-radius: 20px;
 				padding: 24px;
+				margin-top: 20px;
 
-				>div {
+				> div {
 					&.topbar {
-						>div {
+						> div {
 							gap: 13px;
 
-							>img {
+							> img {
 								width: 17px;
 							}
 
-							>p {
+							> p {
 								font-size: 16px;
 							}
 						}
@@ -186,26 +199,27 @@
 					}
 
 					&.main-info {
-						>div {
-							gap: 14px;
+						> div {
+							gap: 10px;
 
-							>p {
+							> p {
+								text-align: left;
 								font-size: 20px;
 							}
 
-							>img {
+							> img {
 								height: 24px;
 							}
 						}
 					}
 				}
 
-				>p {
+				> p {
 					font-size: 16px;
 				}
 			}
 
-			>.payment-choise {
+			> .payment-choise {
 				flex-direction: column;
 				gap: 10px;
 
@@ -214,8 +228,8 @@
 				}
 			}
 
-			>input {
-				&+label {
+			> input {
+				& + label {
 					&::before {
 						width: 24px;
 						height: 24px;
@@ -226,10 +240,10 @@
 			}
 		}
 
-		>button.add.modify {
+		> button.add.modify {
 			width: 270px;
 
-			>img {
+			> img {
 				height: 26px;
 			}
 		}

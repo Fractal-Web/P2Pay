@@ -122,6 +122,7 @@ button {
 		color: #DE0288;
 		border: 1px solid #DE0288;
 		gap: 20px;
+		background-color: #fff;
 
 		&:hover {
 			color: #DE028850;
@@ -140,7 +141,8 @@ button {
 	flex-direction: column;
 	gap: 60px;
 
-	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
 
 	&::-webkit-scrollbar {
 		display: none;
@@ -157,6 +159,8 @@ button {
 		width: 100vw;
 		padding: 40px 10px;
 		border-radius: 0;
+
+		gap: 40px;
 	}
 
 	h1 {
