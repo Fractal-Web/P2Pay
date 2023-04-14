@@ -5,6 +5,7 @@ import { key } from '../../store/store';
 import VueCountdown from '@chenfengyuan/vue-countdown';
 import DataEncryptPopup from '../DataEncryptPopup.vue';
 import QRPopup from '../QRPopup.vue';
+import CustomAlert from '../CustomAlert.vue';
 import './Transfer.css';
 
 // assets
@@ -16,7 +17,11 @@ import LockIcon from '../../assets/lock_icon.svg';
 import { IStore } from '../../store/store';
 
 const store: Store<IStore> = useStore(key);
-const ClipboardCopy = (text: string) => navigator.clipboard.writeText(text);
+const ClipboardCopy = (text: string) => { 
+	navigator.clipboard.writeText(text); 
+	store.state.isCustomAlertOpened = true; 
+	setTimeout(() => store.state.isCustomAlertOpened = false, 3000) 
+};
 
 const isPopupOpened: Ref<'none' | 'DataEncrypt' | 'QR'> = ref('none');
 const ChangePopup = (popupName: 'none' | 'DataEncrypt' | 'QR') => {
@@ -26,6 +31,7 @@ const ChangePopup = (popupName: 'none' | 'DataEncrypt' | 'QR') => {
 </script>
 
 <template>
+	<CustomAlert v-if="store.state.isCustomAlertOpened" text="Текст скопирован в буфер обмена" />
 	<DataEncryptPopup :ChangePopup="ChangePopup" v-if="isPopupOpened == 'DataEncrypt'" />
 	<QRPopup :ChangePopup="ChangePopup" v-if="isPopupOpened == 'QR'" />
 	<div class="transfer page-container">
@@ -54,10 +60,7 @@ const ChangePopup = (popupName: 'none' | 'DataEncrypt' | 'QR') => {
 						<p>
 							Переказ <span>{{ store.state.paymentInfo.summ }} ₴</span>
 						</p>
-						<img
-							:src="`${CopyIcon}`"
-							@click="ClipboardCopy(`${store.state.paymentInfo.summ} ₴`)"
-						/>
+						<img :src="`${CopyIcon}`" @click="ClipboardCopy(`${store.state.paymentInfo.summ} ₴`)" />
 					</div>
 					<div>
 						<p>
@@ -66,21 +69,18 @@ const ChangePopup = (popupName: 'none' | 'DataEncrypt' | 'QR') => {
 								store.state.paymentInfo.card.toString().replace(/\d{4}/g, '$& ')
 							}}</span>
 						</p>
-						<img
-							:src="`${CopyIcon}`"
-							@click="
-								ClipboardCopy(
-									store.state.paymentInfo.card.toString().replace(/\d{4}/g, '$& ')
-								)
-							"
-						/>
+						<img :src="`${CopyIcon}`" @click="
+							ClipboardCopy(
+								store.state.paymentInfo.card.toString().replace(/\d{4}/g, '$& ')
+							)
+						" />
 					</div>
 				</div>
 				<p>
 					{{
 						store.state.paymentInfo.comment
-							? store.state.paymentInfo.comment
-							: 'Без коментаря до переказу'
+						? store.state.paymentInfo.comment
+						: 'Без коментаря до переказу'
 					}}
 				</p>
 			</div>
@@ -95,8 +95,7 @@ const ChangePopup = (popupName: 'none' | 'DataEncrypt' | 'QR') => {
 					<span>Відкрийте додаток {{ store.state.paymentInfo.pickedBank?.name }}</span>
 				</li>
 				<li>
-					<span
-						>Переведіть <b>{{ store.state.paymentInfo.summ }} ₴</b> в
+					<span>Переведіть <b>{{ store.state.paymentInfo.summ }} ₴</b> в
 						{{ store.state.paymentInfo.pickedBank?.name }}
 					</span>
 				</li>
@@ -112,8 +111,7 @@ const ChangePopup = (popupName: 'none' | 'DataEncrypt' | 'QR') => {
 			<input type="checkbox" id="singlePayment" value="Я здійснив переказ (одним платежом)" />
 			<label for="singlePayment">Я здійснив переказ (одним платежом)</label>
 			<router-link :to="{ path: '/request' }">
-				<button class="main">Продовжити</button></router-link
-			>
+				<button class="main">Продовжити</button></router-link>
 		</div>
 	</div>
 </template>
