@@ -12,6 +12,7 @@ import BanksIcon5 from '../assets/banks/banksIcon_5.svg';
 export interface IStore {
 	paymentInfo: IPaymentInfo;
 	banks: IBanks[];
+	isCustomAlertOpened: boolean;
 }
 
 export interface IPaymentInfo {
@@ -67,6 +68,8 @@ export const store = createStore<IStore>({
 				name: 'ПУМБ',
 			},
 		],
+
+		isCustomAlertOpened: false,
 	},
 	mutations: {
 		userPickBank (state, payload) {

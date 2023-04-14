@@ -9,12 +9,19 @@ import BanksOther from '../../assets/banks/banksIcon_other.svg';
 
 // interfaces
 import { IBanks, IStore } from '../../store/store';
+import CustomAlert from '../CustomAlert.vue';
 
 const store: Store<IStore> = useStore(key);
 const banks: IBanks[] = store.state.banks;
+
+const isBankNotPicked = () => {
+	store.state.isCustomAlertOpened = true;
+	setTimeout(() => store.state.isCustomAlertOpened = false, 3000);
+}
 </script>
 
 <template>
+	<CustomAlert v-if="store.state.isCustomAlertOpened" text="Прежде чем продолжить, выберите один из банков" />
 	<div class="payment-method page-container">
 		<img :src="`${Logo}`" class="logo" />
 		<div class="container">
@@ -57,7 +64,7 @@ const banks: IBanks[] = store.state.banks;
 			</div>
 		</div>
 
-		<router-link :to="{ path: '/transfer' }">
+		<router-link :to="{ path: store.state.paymentInfo.pickedBank ? '/transfer' : '/' }" @click="isBankNotPicked()">
 			<button class="main">Продовжити</button></router-link
 		>
 	</div>

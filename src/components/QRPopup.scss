@@ -17,8 +17,8 @@
 	>.wrapper {
 		position: relative;
 		background-color: #fff;
-		width: 90%;
-		max-width: 630px;
+		height: 60%;
+		max-height: 60%;
 		height: auto;
 		aspect-ratio: 1;
 		padding: 0;
@@ -57,11 +57,9 @@
 			max-width: 235px;
 
 			>img {
-				display: none;
-
-				&.qr {
-					display: block;
-				}
+				top: -40%;
+				right: -15%;
+				display: block;
 			}
 		}
 
