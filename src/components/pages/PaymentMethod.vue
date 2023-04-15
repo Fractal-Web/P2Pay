@@ -64,7 +64,7 @@ const isBankNotPicked = () => {
 			</div>
 		</div>
 
-		<router-link :to="{ path: store.state.paymentInfo.pickedBank ? '/transfer' : '/' }" @click="isBankNotPicked()">
+		<router-link :to="{ path: store.state.paymentInfo.pickedBank ? '/transfer' : '/' }" @click="() => store.state.paymentInfo.pickedBank == null && isBankNotPicked()">
 			<button class="main">Продовжити</button></router-link
 		>
 	</div>
